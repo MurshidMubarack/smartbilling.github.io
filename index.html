@@ -13,9 +13,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+            text-align: center;
         }
         #reader {
+            max-width: 100%;
             width: 600px;
+            margin: 0 auto;
         }
         #result {
             text-align: center;
@@ -33,22 +37,35 @@
         .cancel-button {
             margin-left: auto;
         }
+        #product-list {
+            margin-top: 10px;
+        }
+        #total-sum {
+            margin-top: 10px;
+        }
         #button {
-           background-color: #28f833;
-           color: #ffffff;
-           border: none;
-           padding: 5px 10px;
-           cursor: pointer;
-           margin-left: 10px;
-           text-align: center;
-           
+            background-color: #28f833;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin: 10px auto;
+            text-align: center;
+            display: block;
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 600px) {
+            #reader {
+                width: 90%;
+            }
         }
     </style>
 </head> 
 <body>
-    <h1 style="color: red; text-align: center;">HF SMART CART</h1>
-    <h3 style="text-align: center;">QR Scanner</h3>
-    <p style="text-align: center;" >Show the product QR code in front of the camera</p>
+    <h1 style="color: red; text-align: center;">Automated Smart Trolley - G2</h1>
+    <h3 style="text-align: center;">Product scanner</h3>
+    <p style="text-align: center;">Show the product QR code in front of the camera</p>
 
     <main>
         <div id="reader"></div>
@@ -58,7 +75,10 @@
     <div id="product-list"><h3 style="text-align: center; padding-top: 3px;">Product details</h3></div>
     <div id="total-sum"></div>
 
+    <button id="button">PAY</button>
+
     <script>
+        // JavaScript code remains the same
         const productList = document.getElementById('product-list');
         const totalSumElement = document.getElementById('total-sum');
         const productDetails = [];
@@ -68,7 +88,7 @@
                 width: 250,
                 height: 250,
             },
-            fps: 1,
+            fps: 2,
         });
 
         scanner.render(handleQRScan, handleError);
@@ -118,6 +138,5 @@
             console.error(error);
         }
     </script>
-    <button id="button">Pay</button>
 </body>
 </html>
